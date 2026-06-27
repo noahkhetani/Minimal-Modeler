@@ -1,0 +1,306 @@
+# AI Prompt — Build a Minimal 3D Modeller in Python
+
+You are an expert graphics programmer, software architect, and Python educator specializing in OpenGL, computational geometry, CAD systems, and clean software design.
+
+Your task is to design and implement a compact but extensible 3D modeller in Python inspired by classic CAD architecture and scene graph systems.
+
+## Core Objective
+
+Build a lightweight interactive 3D modeller in approximately 500–1000 lines of clean, well-structured Python code.
+
+The system must demonstrate the foundational architecture behind professional CAD and 3D modelling software while remaining educational, readable, and modular.
+
+---
+
+# Technical Stack
+
+Use:
+
+* Python 3
+* PyOpenGL
+* GLUT (OpenGL Utility Toolkit)
+* NumPy
+
+Prefer Legacy OpenGL fixed-function pipeline for simplicity and educational clarity.
+
+Do NOT use:
+
+* Game engines
+* Modern OpenGL shader pipelines
+* Heavy GUI frameworks unless explicitly required
+* External scene graph libraries
+
+---
+
+# Required Features
+
+Implement the following systems:
+
+## 1. Viewer / Rendering Engine
+
+Create a `Viewer` class responsible for:
+
+* Window creation
+* OpenGL initialization
+* Main render loop
+* Projection matrix setup
+* Camera/view transformations
+* Buffer clearing and rendering passes
+* Interaction integration
+
+The renderer should:
+
+* Enable depth testing
+* Support lighting
+* Use matrix stack operations (`glPushMatrix`, `glPopMatrix`)
+* Render a simple grid plane
+* Maintain model-view matrices
+
+---
+
+## 2. Scene Graph Architecture
+
+Implement a hierarchical scene graph using the Composite Design Pattern.
+
+Required classes:
+
+* `Scene`
+* `Node` (abstract base class)
+* `Primitive`
+* `Cube`
+* `Sphere`
+* `HierarchicalNode`
+* `SnowFigure` (example composite object)
+
+Each node should support:
+
+* Translation
+* Scaling
+* Selection state
+* Rendering
+* Bounding boxes (AABB)
+
+The scene should:
+
+* Maintain node collections
+* Handle selection
+* Dispatch manipulation commands
+
+---
+
+## 3. Coordinate Spaces & Transformations
+
+Correctly implement:
+
+* Model space
+* World space
+* View space
+* Projection transformations
+
+Use:
+
+* Translation matrices
+* Scaling matrices
+* Matrix multiplication
+* Inverse model-view matrices
+
+Explain transformation flow clearly in comments.
+
+---
+
+## 4. Interaction System
+
+Build an event-driven interaction system using GLUT callbacks.
+
+Support:
+
+* Mouse movement
+* Mouse clicks
+* Keyboard input
+* Scroll wheel zoom
+* Scene rotation
+* Scene translation
+
+Implement:
+
+* Callback registration system
+* Event dispatching
+* Application-level interaction abstraction
+
+Avoid tightly coupling input handling to rendering logic.
+
+---
+
+## 5. Trackball Camera Rotation
+
+Implement or simulate a trackball-style camera controller.
+
+Requirements:
+
+* Smooth intuitive scene rotation
+* Quaternion-safe logic if possible
+* Mouse drag rotation
+
+Explain:
+
+* Why trackballs are used
+* How they avoid gimbal lock
+
+---
+
+## 6. Object Picking
+
+Implement ray-based object selection.
+
+Requirements:
+
+* Generate rays from mouse coordinates
+* Use projection unprojection (`gluUnProject`)
+* Ray-AABB intersection tests
+* Closest-hit selection logic
+
+Discuss:
+
+* Accuracy vs performance tradeoffs
+* Why AABB approximation is used
+
+---
+
+## 7. Object Manipulation
+
+Support:
+
+* Moving selected objects
+* Scaling selected objects
+* Color cycling
+* Adding primitives dynamically
+
+Objects should update:
+
+* Transformation matrices
+* Bounding boxes
+* Scene state
+
+---
+
+# Architecture Requirements
+
+The code must demonstrate:
+
+* Separation of concerns
+* Encapsulation
+* Extensibility
+* Clean abstractions
+* Scene graph traversal
+* Matrix stack management
+* Event-driven programming
+
+Use OOP principles appropriately.
+
+Avoid:
+
+* Monolithic functions
+* Global mutable state
+* Duplicate rendering logic
+* Hardcoded behaviors
+
+---
+
+# Educational Requirements
+
+The implementation should teach:
+
+* Basic computer graphics architecture
+* Scene graphs
+* Transformations
+* Rendering pipelines
+* Picking systems
+* CAD software fundamentals
+
+Include:
+
+* Detailed comments
+* Explanations of math
+* Explanations of rendering flow
+* Tradeoff discussions
+* Design pattern explanations
+
+---
+
+# Output Requirements
+
+Provide:
+
+1. Full Python source code
+2. File/module organization
+3. Setup instructions
+4. Dependency installation
+5. Execution instructions
+6. Architectural explanation
+7. Rendering pipeline explanation
+8. Interaction system explanation
+9. Future improvement ideas
+
+---
+
+# Coding Style
+
+Requirements:
+
+* Clean Pythonic structure
+* Readable naming
+* Small focused methods
+* Type hints when useful
+* Minimal unnecessary abstraction
+* Educational clarity over cleverness
+
+---
+
+# Nice-to-Have Features
+
+If possible, optionally include:
+
+* Undo/redo system
+* Save/load scene to JSON
+* Wireframe mode
+* Accurate mesh picking
+* Mesh support
+* Gizmo manipulators
+* Scene serialization
+* Camera presets
+
+---
+
+# Constraints
+
+Keep the project:
+
+* Compact
+* Understandable
+* Educational
+* Self-contained
+
+Prioritize:
+
+1. Clarity
+2. Architecture
+3. Correctness
+4. Extensibility
+5. Simplicity
+
+Avoid overengineering.
+
+---
+
+# Expected Deliverable Style
+
+The final result should resemble:
+
+* A miniature CAD engine
+* A teaching-quality graphics project
+* A simplified Blender/OpenSCAD architecture
+* A clean example of scene graph rendering
+
+The explanation quality should be suitable for intermediate developers learning computer graphics and software architecture.
+
+Include concise but meaningful commentary throughout the implementation.

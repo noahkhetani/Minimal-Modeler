@@ -1,0 +1,38 @@
+appId: com.noahkhetani.minimal3dmodeller
+productName: Minimal 3D Modeller
+copyright: Copyright © 2026 Noah Khetani
+
+directories:
+  output: ../release
+  buildResources: build
+
+# app code from electron-vite
+files:
+  - out/**
+  - package.json
+
+# ship the pyinstaller modeller next to the app (resources/modeller/*), reachable
+# at runtime via process.resourcesPath/modeller/Minimal3DModeller.exe
+extraResources:
+  - from: resources/modeller
+    to: modeller
+    filter:
+      - '**/*'
+
+win:
+  target:
+    - nsis
+  artifactName: Minimal-3D-Modeller-Setup-${version}.exe
+  # skip rcedit/signing so the build doesn't need winCodeSign (its macOS dylib
+  # symlinks won't extract on windows without developer mode)
+  signAndEditExecutable: false
+
+nsis:
+  oneClick: false
+  perMachine: true
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Minimal 3D Modeller
+  runAfterFinish: true

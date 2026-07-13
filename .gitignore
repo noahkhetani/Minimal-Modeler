@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging / build (PyInstaller scratch — the shipped installer lives in release/)
+*.egg-info/
+build/
+dist/
+build_pkg/
+*.spec
+
+# Build output — the installer ships as a GitHub Release asset, not in git
+release/
+
+# Runtime output / user data
+scene.json
+keybinds.json
+projects/
+
+# IDEs / editors
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
